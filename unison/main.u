@@ -1,0 +1,35 @@
+square : Nat -> Nat
+square a = a * a
+
+cube : Nat -> Nat
+cube x = x * square x
+
+squares = List.map square [1, 2, 3, 4, 5]
+cubes   = List.map cube [1, 2, 3, 4, 5]
+
+cubePlusOne : Nat -> Nat
+cubePlusOne x = (cube x) + 1
+
+stringify : [Nat] -> Text
+stringify list = List.foldLeft (a x -> (a ++ (Nat.toText x) ++ " ")) "" list
+
+wrapper : [Nat] -> Text
+wrapper x = "wrap { " ++ stringify x ++ "}"
+
+test = List.map (elem -> elem + 1) [1, 2, 3]
+
+adder : [Nat] -> [Nat]
+adder l = List.map (x -> x + 1) l
+
+test2 = List.foldLeft (++) "" ( List.map Nat.toText [1, 2, 3] )
+--test2 = List.foldLeft (++) "" ["hi", "world", "hello"]
+--test2 = List.map Nat.toText [1, 2, 3]
+
+mainFunc : '{IO, Exception} ()
+mainFunc _ =
+    use Text ++
+    printLine ("hello unison: " ++ (stringify cubes))
+    printLine (wrapper squares)
+    --printLine ("hello unison:" ++ (stringify (List.map Nat.toText cubes)))
+    --printLine ("hello unison!" ++ List.toText cubes) -- doesnt exist
+

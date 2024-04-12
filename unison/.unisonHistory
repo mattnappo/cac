@@ -1,0 +1,100 @@
+run mainFunc 
+run mainFunc 
+update
+run mainFunc 
+run mainFunc 
+run maiNFunc
+list
+update
+update
+run mainFunc 
+run mainFunc 
+run mainFunc 
+run mainFunc
+update
+run mainFunc
+update
+run mainFunc 
+update
+update mainFunc
+run mainFunc
+update
+view adder
+test
+exec
+run adder 
+add
+view mainFunc 
+display mainFunc 
+display
+help
+add
+view test
+test
+add test
+add
+add .
+ls
+l
+test
+view test
+List.map
+run mainFunc 
+add
+update
+run mainFunc 
+update
+run mainFunc 
+update
+run mainFunc 
+run mainf
+update
+run mainFunc 
+run mainFunc
+add
+compile main file
+compile
+view 2
+view 1
+view 3
+dependencies cube_plus_one 
+dependents cube_plus_one 
+dependents cube
+dependencies cube
+dependencies
+view cubes
+view cube
+ls
+view
+help
+help
+compile
+> cube 3
+cube 3
+delete cube
+remove
+delete
+help
+run cube_plus_one 
+cube_plus_one
+update
+add
+run mfunc
+update
+update
+load main.u
+load .
+load
+add
+api
+?
+ls
+mfunc
+update
+ls
+run cube 7
+fzf
+run
+help
+help
+main.cube 5
