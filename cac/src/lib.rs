@@ -9,7 +9,10 @@ use anyhow::Result;
 #[derive(Debug)]
 enum Item {
     Function(ast::FunctionDefinition),
-    Struct(ast::StructDeclaration),
+    Struct(ast::StructType),
+    Union(ast::StructType),
+    Enum(ast::EnumType),
+    // Typedef // TODO
 }
 
 /// Extract all `Item`s
@@ -42,15 +45,18 @@ impl<'ast> visit::Visit<'ast> for Items {
         self.0.push(Item::Function(func.to_owned()))
     }
 
-    fn visit_type_specifier(&mut self, spec: &'ast ast::TypeSpecifier, span: &'ast span::Span) {
-        match spec {
-            ast::TypeSpecifier::Struct (node) => {node.}
-        }
+    fn visit_struct_type(&mut self, spec: &'ast ast::StructType, _: &'ast span::Span) {
+        match spec.kind.node {
+            // ast::TypeSpecifier::Struct(node) => self.0.push(Item::Struct(node.node.to_owned())),
+            ast::StructKind::Struct => self.0.push(Item::Struct(spec.to_owned())),
+            ast::StructKind::Union => self.0.push(Item::Union(spec.to_owned())),
+            _ => todo!(),
+        };
     }
 
-    // fn visit_translation_unit(&mut self, translation_unit: &'ast TranslationUnit) {
-    // translation_unit
-    // }
+    fn visit_enum_type(&mut self, spec: &'ast ast::EnumType, _: &'ast span::Span) {
+        self.0.push(Item::Enum(spec.to_owned()))
+    }
 }
 
 #[cfg(test)]
@@ -66,5 +72,20 @@ mod tests {
     fn test_extract2() {
         let items = extract("examples/ex2.c").unwrap();
         println!("items (ex2.c): {:#?}", items);
+    }
+    #[test]
+    fn test_struct() {
+        let items = extract("examples/structs.c").unwrap();
+        println!("items (structs.c): {:#?}", items);
+    }
+    #[test]
+    fn test_enum() {
+        let items = extract("examples/enum.c").unwrap();
+        println!("items (enum.c): {:#?}", items);
+    }
+    #[test]
+    fn test_typedef() {
+        let items = extract("examples/typedef.c").unwrap();
+        println!("items (typedef.c): {:#?}", items);
     }
 }

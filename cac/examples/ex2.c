@@ -1,7 +1,6 @@
 struct vec3 {
     float x, y, z;
     float second;
-    float zzz;
 };
 
 float norm(struct vec3 vec)
