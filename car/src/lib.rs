@@ -12,6 +12,20 @@ fn hash<T: std::fmt::Debug>(x: T) -> String {
     format!("{:x}", hasher.finalize())
 }
 
+fn ident(item: &syn::Item) -> String {
+    match item {
+        syn::Item::Fn(f) => f.sig.ident.clone(),
+        syn::Item::Enum(e) => e.ident.clone(),
+        syn::Item::Struct(s) => s.ident.clone(),
+        syn::Item::Const(c) => c.ident.clone(),
+        syn::Item::Type(t) => t.ident.clone(),
+        syn::Item::Static(s) => s.ident.clone(),
+        syn::Item::Union(u) => u.ident.clone(),
+        _ => todo!(),
+    }
+    .to_string()
+}
+
 #[derive(Debug)]
 struct Compiler {
     names_to_h: HashMap<String, String>,
@@ -45,23 +59,23 @@ impl Compiler {
             })
             .collect::<Vec<syn::Item>>();
 
+        /*
+         * Before hashing, we must do the traversal and update all:
+         * function calls
+         * type references
+         * Idents (in particular cases like for typedefs)
+         * object.call()'s (how are these repr'd in AST?
+         *     requires me to handle impl blocks first
+         */
+
         // Identifier --> Hash
         let names_to_h = items
             .iter()
-            .map(|item| match item {
-                syn::Item::Fn(f) => (f.sig.ident.to_string(), hash(f)),
-                syn::Item::Enum(e) => (e.ident.to_string(), hash(e)),
-                syn::Item::Struct(s) => (s.ident.to_string(), hash(s)),
-                syn::Item::Const(c) => (c.ident.to_string(), hash(c)),
-                syn::Item::Type(t) => (t.ident.to_string(), hash(t)),
-                syn::Item::Static(s) => (s.ident.to_string(), hash(s)),
-                syn::Item::Union(u) => (u.ident.to_string(), hash(u)),
-                _ => todo!(),
-            })
+            .map(|item| (ident(item), hash(item)))
             .collect::<HashMap<String, String>>();
 
         // Hash --> AST
-        let h_to_ast = items
+        let h_to_ast = items // fix item.clone to be the ident
             .into_iter()
             .map(|item| (hash(item.clone()), item))
             .collect::<HashMap<String, syn::Item>>();
@@ -80,6 +94,18 @@ mod tests {
     #[test]
     fn test_functions() {
         let cc = Compiler::extract("examples/functions.rs").unwrap();
+        println!("compiler: {cc:#?}")
+    }
+
+    #[test]
+    fn test_types() {
+        let cc = Compiler::extract("examples/types.rs").unwrap();
+        println!("compiler: {cc:#?}")
+    }
+
+    #[test]
+    fn test_refs() {
+        let cc = Compiler::extract("examples/references.rs").unwrap();
         println!("compiler: {cc:#?}")
     }
 }
