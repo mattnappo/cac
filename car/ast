@@ -29,7 +29,57 @@ File {
                     where_clause: None,
                 },
                 paren_token: Paren,
-                inputs: [],
+                inputs: [
+                    FnArg::Typed(
+                        PatType {
+                            attrs: [],
+                            pat: Pat::Ident {
+                                attrs: [],
+                                by_ref: None,
+                                mutability: None,
+                                ident: Ident(
+                                    p,
+                                ),
+                                subpat: None,
+                            },
+                            colon_token: Colon,
+                            ty: Type::Tuple {
+                                paren_token: Paren,
+                                elems: [
+                                    Type::Path {
+                                        qself: None,
+                                        path: Path {
+                                            leading_colon: None,
+                                            segments: [
+                                                PathSegment {
+                                                    ident: Ident(
+                                                        i128,
+                                                    ),
+                                                    arguments: PathArguments::None,
+                                                },
+                                            ],
+                                        },
+                                    },
+                                    Comma,
+                                    Type::Path {
+                                        qself: None,
+                                        path: Path {
+                                            leading_colon: None,
+                                            segments: [
+                                                PathSegment {
+                                                    ident: Ident(
+                                                        i128,
+                                                    ),
+                                                    arguments: PathArguments::None,
+                                                },
+                                            ],
+                                        },
+                                    },
+                                ],
+                            },
+                        },
+                    ),
+                ],
                 variadic: None,
                 output: ReturnType::Default,
             },
@@ -57,7 +107,37 @@ File {
                     where_clause: None,
                 },
                 paren_token: Paren,
-                inputs: [],
+                inputs: [
+                    FnArg::Typed(
+                        PatType {
+                            attrs: [],
+                            pat: Pat::Ident {
+                                attrs: [],
+                                by_ref: None,
+                                mutability: None,
+                                ident: Ident(
+                                    i,
+                                ),
+                                subpat: None,
+                            },
+                            colon_token: Colon,
+                            ty: Type::Path {
+                                qself: None,
+                                path: Path {
+                                    leading_colon: None,
+                                    segments: [
+                                        PathSegment {
+                                            ident: Ident(
+                                                i32,
+                                            ),
+                                            arguments: PathArguments::None,
+                                        },
+                                    ],
+                                },
+                            },
+                        },
+                    ),
+                ],
                 variadic: None,
                 output: ReturnType::Default,
             },
@@ -83,12 +163,76 @@ File {
                                 },
                             },
                             paren_token: Paren,
-                            args: [],
+                            args: [
+                                Expr::Tuple {
+                                    attrs: [],
+                                    paren_token: Paren,
+                                    elems: [
+                                        Expr::Lit {
+                                            attrs: [],
+                                            lit: Lit::Int {
+                                                token: 2,
+                                            },
+                                        },
+                                        Comma,
+                                        Expr::Lit {
+                                            attrs: [],
+                                            lit: Lit::Int {
+                                                token: 2,
+                                            },
+                                        },
+                                    ],
+                                },
+                            ],
                         },
                         Some(
                             Semi,
                         ),
                     ),
+                    Stmt::Local {
+                        attrs: [],
+                        let_token: Let,
+                        pat: Pat::Type {
+                            attrs: [],
+                            pat: Pat::Ident {
+                                attrs: [],
+                                by_ref: None,
+                                mutability: None,
+                                ident: Ident(
+                                    x,
+                                ),
+                                subpat: None,
+                            },
+                            colon_token: Colon,
+                            ty: Type::Path {
+                                qself: None,
+                                path: Path {
+                                    leading_colon: None,
+                                    segments: [
+                                        PathSegment {
+                                            ident: Ident(
+                                                f32,
+                                            ),
+                                            arguments: PathArguments::None,
+                                        },
+                                    ],
+                                },
+                            },
+                        },
+                        init: Some(
+                            LocalInit {
+                                eq_token: Eq,
+                                expr: Expr::Lit {
+                                    attrs: [],
+                                    lit: Lit::Float {
+                                        token: 3.1,
+                                    },
+                                },
+                                diverge: None,
+                            },
+                        ),
+                        semi_token: Semi,
+                    },
                 ],
             },
         },
@@ -198,34 +342,12 @@ File {
         },
     ],
 }
-compiler: Compiler {
-    names_to_h: {
-        "main": "69f4b28bb16b87883685f2fa2b62173a6d37b0e5",
-        "b": "ef030e8a38dcd0ab806eb801bcbc350813e3d463",
-        "Unit": "aafed7fcdee7b74ebbd7c0c0e8cb6b102f2c9563",
-        "a": "10b0b417fb8e1ab68e371656b6c77334362908cd",
-        "c": "59c81357b374bbb02dd133f0723b49f916129591",
-    },
-    h_to_ast: {
-        "aafed7fcdee7b74ebbd7c0c0e8cb6b102f2c9563": Item::Struct {
-            attrs: [],
-            vis: Visibility::Inherited,
-            struct_token: Struct,
-            ident: Ident(
-                Unit,
-            ),
-            generics: Generics {
-                lt_token: None,
-                params: [],
-                gt_token: None,
-                where_clause: None,
-            },
-            fields: Fields::Unit,
-            semi_token: Some(
-                Semi,
-            ),
-        },
-        "10b0b417fb8e1ab68e371656b6c77334362908cd": Item::Fn {
+AST AFTER LINKING:
+File {
+    shebang: None,
+    attrs: [],
+    items: [
+        Item::Fn {
             attrs: [],
             vis: Visibility::Inherited,
             sig: Signature {
@@ -244,7 +366,398 @@ compiler: Compiler {
                     where_clause: None,
                 },
                 paren_token: Paren,
+                inputs: [
+                    FnArg::Typed(
+                        PatType {
+                            attrs: [],
+                            pat: Pat::Ident {
+                                attrs: [],
+                                by_ref: None,
+                                mutability: None,
+                                ident: Ident(
+                                    p,
+                                ),
+                                subpat: None,
+                            },
+                            colon_token: Colon,
+                            ty: Type::Tuple {
+                                paren_token: Paren,
+                                elems: [
+                                    Type::Path {
+                                        qself: None,
+                                        path: Path {
+                                            leading_colon: None,
+                                            segments: [
+                                                PathSegment {
+                                                    ident: Ident(
+                                                        __refr__d5a45d88e899d9db4f720d6e9b75682a28b5d0e0,
+                                                    ),
+                                                    arguments: PathArguments::None,
+                                                },
+                                            ],
+                                        },
+                                    },
+                                    Comma,
+                                    Type::Path {
+                                        qself: None,
+                                        path: Path {
+                                            leading_colon: None,
+                                            segments: [
+                                                PathSegment {
+                                                    ident: Ident(
+                                                        __refr__d5a45d88e899d9db4f720d6e9b75682a28b5d0e0,
+                                                    ),
+                                                    arguments: PathArguments::None,
+                                                },
+                                            ],
+                                        },
+                                    },
+                                ],
+                            },
+                        },
+                    ),
+                ],
+                variadic: None,
+                output: ReturnType::Default,
+            },
+            block: Block {
+                brace_token: Brace,
+                stmts: [],
+            },
+        },
+        Item::Fn {
+            attrs: [],
+            vis: Visibility::Inherited,
+            sig: Signature {
+                constness: None,
+                asyncness: None,
+                unsafety: None,
+                abi: None,
+                fn_token: Fn,
+                ident: Ident(
+                    b,
+                ),
+                generics: Generics {
+                    lt_token: None,
+                    params: [],
+                    gt_token: None,
+                    where_clause: None,
+                },
+                paren_token: Paren,
+                inputs: [
+                    FnArg::Typed(
+                        PatType {
+                            attrs: [],
+                            pat: Pat::Ident {
+                                attrs: [],
+                                by_ref: None,
+                                mutability: None,
+                                ident: Ident(
+                                    i,
+                                ),
+                                subpat: None,
+                            },
+                            colon_token: Colon,
+                            ty: Type::Path {
+                                qself: None,
+                                path: Path {
+                                    leading_colon: None,
+                                    segments: [
+                                        PathSegment {
+                                            ident: Ident(
+                                                __refr__7563a149ef9216d5f2fe54df1b00d65a1dfe2771,
+                                            ),
+                                            arguments: PathArguments::None,
+                                        },
+                                    ],
+                                },
+                            },
+                        },
+                    ),
+                ],
+                variadic: None,
+                output: ReturnType::Default,
+            },
+            block: Block {
+                brace_token: Brace,
+                stmts: [
+                    Stmt::Expr(
+                        Expr::Call {
+                            attrs: [],
+                            func: Expr::Path {
+                                attrs: [],
+                                qself: None,
+                                path: Path {
+                                    leading_colon: None,
+                                    segments: [
+                                        PathSegment {
+                                            ident: Ident(
+                                                a,
+                                            ),
+                                            arguments: PathArguments::None,
+                                        },
+                                    ],
+                                },
+                            },
+                            paren_token: Paren,
+                            args: [
+                                Expr::Tuple {
+                                    attrs: [],
+                                    paren_token: Paren,
+                                    elems: [
+                                        Expr::Lit {
+                                            attrs: [],
+                                            lit: Lit::Int {
+                                                token: 2,
+                                            },
+                                        },
+                                        Comma,
+                                        Expr::Lit {
+                                            attrs: [],
+                                            lit: Lit::Int {
+                                                token: 2,
+                                            },
+                                        },
+                                    ],
+                                },
+                            ],
+                        },
+                        Some(
+                            Semi,
+                        ),
+                    ),
+                    Stmt::Local {
+                        attrs: [],
+                        let_token: Let,
+                        pat: Pat::Type {
+                            attrs: [],
+                            pat: Pat::Ident {
+                                attrs: [],
+                                by_ref: None,
+                                mutability: None,
+                                ident: Ident(
+                                    x,
+                                ),
+                                subpat: None,
+                            },
+                            colon_token: Colon,
+                            ty: Type::Path {
+                                qself: None,
+                                path: Path {
+                                    leading_colon: None,
+                                    segments: [
+                                        PathSegment {
+                                            ident: Ident(
+                                                __refr__bd1e7acba2eb174c01bac1167218f523be326312,
+                                            ),
+                                            arguments: PathArguments::None,
+                                        },
+                                    ],
+                                },
+                            },
+                        },
+                        init: Some(
+                            LocalInit {
+                                eq_token: Eq,
+                                expr: Expr::Lit {
+                                    attrs: [],
+                                    lit: Lit::Float {
+                                        token: 3.1,
+                                    },
+                                },
+                                diverge: None,
+                            },
+                        ),
+                        semi_token: Semi,
+                    },
+                ],
+            },
+        },
+        Item::Struct {
+            attrs: [],
+            vis: Visibility::Inherited,
+            struct_token: Struct,
+            ident: Ident(
+                Unit,
+            ),
+            generics: Generics {
+                lt_token: None,
+                params: [],
+                gt_token: None,
+                where_clause: None,
+            },
+            fields: Fields::Unit,
+            semi_token: Some(
+                Semi,
+            ),
+        },
+        Item::Fn {
+            attrs: [],
+            vis: Visibility::Inherited,
+            sig: Signature {
+                constness: None,
+                asyncness: None,
+                unsafety: None,
+                abi: None,
+                fn_token: Fn,
+                ident: Ident(
+                    c,
+                ),
+                generics: Generics {
+                    lt_token: None,
+                    params: [],
+                    gt_token: None,
+                    where_clause: None,
+                },
+                paren_token: Paren,
+                inputs: [
+                    FnArg::Typed(
+                        PatType {
+                            attrs: [],
+                            pat: Pat::Ident {
+                                attrs: [],
+                                by_ref: None,
+                                mutability: None,
+                                ident: Ident(
+                                    t,
+                                ),
+                                subpat: None,
+                            },
+                            colon_token: Colon,
+                            ty: Type::Path {
+                                qself: None,
+                                path: Path {
+                                    leading_colon: None,
+                                    segments: [
+                                        PathSegment {
+                                            ident: Ident(
+                                                __refr__b6a9b9331932762a6d15c08515eade072565eda6,
+                                            ),
+                                            arguments: PathArguments::None,
+                                        },
+                                    ],
+                                },
+                            },
+                        },
+                    ),
+                ],
+                variadic: None,
+                output: ReturnType::Default,
+            },
+            block: Block {
+                brace_token: Brace,
+                stmts: [],
+            },
+        },
+        Item::Fn {
+            attrs: [],
+            vis: Visibility::Inherited,
+            sig: Signature {
+                constness: None,
+                asyncness: None,
+                unsafety: None,
+                abi: None,
+                fn_token: Fn,
+                ident: Ident(
+                    main,
+                ),
+                generics: Generics {
+                    lt_token: None,
+                    params: [],
+                    gt_token: None,
+                    where_clause: None,
+                },
+                paren_token: Paren,
                 inputs: [],
+                variadic: None,
+                output: ReturnType::Default,
+            },
+            block: Block {
+                brace_token: Brace,
+                stmts: [],
+            },
+        },
+    ],
+}
+compiler: Compiler {
+    names_to_h: {
+        "c": "59c81357b374bbb02dd133f0723b49f916129591",
+        "main": "69f4b28bb16b87883685f2fa2b62173a6d37b0e5",
+        "Unit": "aafed7fcdee7b74ebbd7c0c0e8cb6b102f2c9563",
+        "b": "61c0ac6c59c4758a40611b47686ddfc3623f071c",
+        "a": "c4670482a0c4887455b893551c0ffee55d71a127",
+    },
+    h_to_ast: {
+        "c4670482a0c4887455b893551c0ffee55d71a127": Item::Fn {
+            attrs: [],
+            vis: Visibility::Inherited,
+            sig: Signature {
+                constness: None,
+                asyncness: None,
+                unsafety: None,
+                abi: None,
+                fn_token: Fn,
+                ident: Ident(
+                    a,
+                ),
+                generics: Generics {
+                    lt_token: None,
+                    params: [],
+                    gt_token: None,
+                    where_clause: None,
+                },
+                paren_token: Paren,
+                inputs: [
+                    FnArg::Typed(
+                        PatType {
+                            attrs: [],
+                            pat: Pat::Ident {
+                                attrs: [],
+                                by_ref: None,
+                                mutability: None,
+                                ident: Ident(
+                                    p,
+                                ),
+                                subpat: None,
+                            },
+                            colon_token: Colon,
+                            ty: Type::Tuple {
+                                paren_token: Paren,
+                                elems: [
+                                    Type::Path {
+                                        qself: None,
+                                        path: Path {
+                                            leading_colon: None,
+                                            segments: [
+                                                PathSegment {
+                                                    ident: Ident(
+                                                        i128,
+                                                    ),
+                                                    arguments: PathArguments::None,
+                                                },
+                                            ],
+                                        },
+                                    },
+                                    Comma,
+                                    Type::Path {
+                                        qself: None,
+                                        path: Path {
+                                            leading_colon: None,
+                                            segments: [
+                                                PathSegment {
+                                                    ident: Ident(
+                                                        i128,
+                                                    ),
+                                                    arguments: PathArguments::None,
+                                                },
+                                            ],
+                                        },
+                                    },
+                                ],
+                            },
+                        },
+                    ),
+                ],
                 variadic: None,
                 output: ReturnType::Default,
             },
@@ -339,7 +852,7 @@ compiler: Compiler {
                 stmts: [],
             },
         },
-        "ef030e8a38dcd0ab806eb801bcbc350813e3d463": Item::Fn {
+        "61c0ac6c59c4758a40611b47686ddfc3623f071c": Item::Fn {
             attrs: [],
             vis: Visibility::Inherited,
             sig: Signature {
@@ -358,7 +871,37 @@ compiler: Compiler {
                     where_clause: None,
                 },
                 paren_token: Paren,
-                inputs: [],
+                inputs: [
+                    FnArg::Typed(
+                        PatType {
+                            attrs: [],
+                            pat: Pat::Ident {
+                                attrs: [],
+                                by_ref: None,
+                                mutability: None,
+                                ident: Ident(
+                                    i,
+                                ),
+                                subpat: None,
+                            },
+                            colon_token: Colon,
+                            ty: Type::Path {
+                                qself: None,
+                                path: Path {
+                                    leading_colon: None,
+                                    segments: [
+                                        PathSegment {
+                                            ident: Ident(
+                                                i32,
+                                            ),
+                                            arguments: PathArguments::None,
+                                        },
+                                    ],
+                                },
+                            },
+                        },
+                    ),
+                ],
                 variadic: None,
                 output: ReturnType::Default,
             },
@@ -384,14 +927,96 @@ compiler: Compiler {
                                 },
                             },
                             paren_token: Paren,
-                            args: [],
+                            args: [
+                                Expr::Tuple {
+                                    attrs: [],
+                                    paren_token: Paren,
+                                    elems: [
+                                        Expr::Lit {
+                                            attrs: [],
+                                            lit: Lit::Int {
+                                                token: 2,
+                                            },
+                                        },
+                                        Comma,
+                                        Expr::Lit {
+                                            attrs: [],
+                                            lit: Lit::Int {
+                                                token: 2,
+                                            },
+                                        },
+                                    ],
+                                },
+                            ],
                         },
                         Some(
                             Semi,
                         ),
                     ),
+                    Stmt::Local {
+                        attrs: [],
+                        let_token: Let,
+                        pat: Pat::Type {
+                            attrs: [],
+                            pat: Pat::Ident {
+                                attrs: [],
+                                by_ref: None,
+                                mutability: None,
+                                ident: Ident(
+                                    x,
+                                ),
+                                subpat: None,
+                            },
+                            colon_token: Colon,
+                            ty: Type::Path {
+                                qself: None,
+                                path: Path {
+                                    leading_colon: None,
+                                    segments: [
+                                        PathSegment {
+                                            ident: Ident(
+                                                f32,
+                                            ),
+                                            arguments: PathArguments::None,
+                                        },
+                                    ],
+                                },
+                            },
+                        },
+                        init: Some(
+                            LocalInit {
+                                eq_token: Eq,
+                                expr: Expr::Lit {
+                                    attrs: [],
+                                    lit: Lit::Float {
+                                        token: 3.1,
+                                    },
+                                },
+                                diverge: None,
+                            },
+                        ),
+                        semi_token: Semi,
+                    },
                 ],
             },
+        },
+        "aafed7fcdee7b74ebbd7c0c0e8cb6b102f2c9563": Item::Struct {
+            attrs: [],
+            vis: Visibility::Inherited,
+            struct_token: Struct,
+            ident: Ident(
+                Unit,
+            ),
+            generics: Generics {
+                lt_token: None,
+                params: [],
+                gt_token: None,
+                where_clause: None,
+            },
+            fields: Fields::Unit,
+            semi_token: Some(
+                Semi,
+            ),
         },
     },
 }
