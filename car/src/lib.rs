@@ -17,6 +17,20 @@ macro_rules! ident {
     };
 }
 
+fn ident(item: &syn::Item) -> String {
+    match item {
+        syn::Item::Fn(f) => f.sig.ident.clone(),
+        syn::Item::Enum(e) => e.ident.clone(),
+        syn::Item::Struct(s) => s.ident.clone(),
+        syn::Item::Const(c) => c.ident.clone(),
+        syn::Item::Type(t) => t.ident.clone(),
+        syn::Item::Static(s) => s.ident.clone(),
+        syn::Item::Union(u) => u.ident.clone(),
+        _ => todo!(),
+    }
+    .to_string()
+}
+
 fn segments_to_string<T: quote::ToTokens, V: quote::ToTokens>(
     segs: &syn::punctuated::Punctuated<T, V>,
 ) -> String {
@@ -78,20 +92,6 @@ fn base_types(ty: &syn::Type) -> HashSet<String> {
         _ => {}
     };
     types
-}
-
-fn ident(item: &syn::Item) -> String {
-    match item {
-        syn::Item::Fn(f) => f.sig.ident.clone(),
-        syn::Item::Enum(e) => e.ident.clone(),
-        syn::Item::Struct(s) => s.ident.clone(),
-        syn::Item::Const(c) => c.ident.clone(),
-        syn::Item::Type(t) => t.ident.clone(),
-        syn::Item::Static(s) => s.ident.clone(),
-        syn::Item::Union(u) => u.ident.clone(),
-        _ => todo!(),
-    }
-    .to_string()
 }
 
 #[derive(Debug)]
@@ -185,12 +185,13 @@ impl TypeDAG {
     fn build(ast: &syn::File) -> Self {
         let mut edges = HashMap::new();
 
-        // Find things that are not actual code (types, consts, etc...)
+        // Find things that are not actual code (types, consts, fn sigs, etc..)
         let items = ast
             .items
             .iter()
             .filter(|item| match item {
-                syn::Item::Const(_)
+                syn::Item::Fn(_)
+                | syn::Item::Const(_)
                 | syn::Item::Enum(_)
                 | syn::Item::Static(_)
                 | syn::Item::Struct(_)
@@ -198,42 +199,30 @@ impl TypeDAG {
                 // | syn::Item::TraitAlias(_)
                 | syn::Item::Type(_)
                 | syn::Item::Union(_) => true,
-                _ => false,
+                _ => false, // unimplemented
             })
             .collect::<Vec<&syn::Item>>();
 
         // For each item, find all the things that depend on it
         for src in &items {
+            // TODO turn into iter collect
             let src_deps = match src {
                 syn::Item::Const(c) => base_types(&*c.ty),
                 syn::Item::Enum(e) => e
                     .variants
                     .iter()
-                    .map(|variant| match &variant.fields {
-                        syn::Fields::Named(fields) => fields
-                            .named
-                            .iter()
-                            .map(|field| base_types(&field.ty))
-                            .flatten()
-                            .collect::<HashSet<String>>(),
-
-                        syn::Fields::Unnamed(fields) => fields
-                            .unnamed
-                            .iter()
-                            .map(|field| base_types(&field.ty))
-                            .flatten()
-                            .collect::<HashSet<String>>(),
-                        _ => HashSet::new(),
-                    })
+                    .map(|variant| fields(&variant.fields))
                     .flatten()
-                    .collect::<HashSet<String>>(),
-                _ => HashSet::new(), //syn::Item::Static(s) => {}
-                                     //syn::Item::Struct(s) => {}
-                                     //// | syn::Item::Trait(_) // TODO later
-                                     //// | syn::Item::TraitAlias(_)
-                                     //syn::Item::Type(t) => {}
-                                     //syn::Item::Union(u) => {}
-                                     //_ => false,
+                    .collect::<_>(),
+
+                syn::Item::Static(s) => base_types(&*s.ty),
+                syn::Item::Struct(s) => fields(&s.fields),
+                syn::Item::Type(t) => base_types(&*t.ty),
+                //syn::Item::Union(u) => {}
+                _ => HashSet::new(),
+                //// | syn::Item::Trait(_) // TODO later
+                //// | syn::Item::TraitAlias(_)
+                //_ => false,
             };
 
             edges.insert(ident(src), src_deps);
@@ -244,6 +233,24 @@ impl TypeDAG {
         }
 
         Self { edges }
+    }
+}
+
+fn fields(f: &syn::Fields) -> HashSet<String> {
+    match f {
+        syn::Fields::Named(fields) => fields
+            .named
+            .iter()
+            .map(|field| base_types(&field.ty))
+            .flatten()
+            .collect::<HashSet<_>>(),
+        syn::Fields::Unnamed(fields) => fields
+            .unnamed
+            .iter()
+            .map(|field| base_types(&field.ty))
+            .flatten()
+            .collect::<HashSet<_>>(),
+        _ => HashSet::new(),
     }
 }
 
