@@ -59,6 +59,28 @@ impl<'ast> visit::Visit<'ast> for Items {
     }
 }
 
+struct Hash {
+    digest: String,
+}
+
+impl Item {
+    // TODO: Before hashing, must remove `Span`'s (requires work on my fork)
+
+    fn hash_struct_union(&self) -> Hash {
+        todo!()
+    }
+    fn hash_enum(&self) -> Hash {
+        todo!()
+    }
+    fn hash_function(&self) -> Hash {
+        todo!()
+    }
+
+    fn hash(&self) -> Hash {
+        todo!()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

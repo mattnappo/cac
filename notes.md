@@ -54,6 +54,12 @@ The name of the function
 
 5. User modifies the contents AND name of an existing function
 
+# Distributed Computing
+
+We want to be able to fully serialize arbitrary computations, and send them over a network. Then, another node can parse this "arbitrary computation" (in the form of my custom, hashed & linked AST data structure) and automatically fetch any missing dependences that it needs from a centralized, hosted database.
+
+So you will be able to say stuff like "run this here, run that there, etc..."
+
 # Custom Compiler
 
 I need a way to serialize everything -- types and functions.
