@@ -3,13 +3,18 @@ extern crate quote;
 
 use anyhow::Result;
 use proc_macro2::Span;
+
 use sha1::{Digest, Sha1};
 use std::collections::HashMap;
 use std::collections::HashSet;
 use std::fs::File;
 use std::io::Read;
+use std::io::Write;
 use syn;
 use syn::visit_mut::VisitMut;
+
+use petgraph::dot::{Config, Dot};
+use petgraph::Graph;
 
 macro_rules! ident {
     ($hash:expr) => {
@@ -18,14 +23,15 @@ macro_rules! ident {
 }
 
 fn ident(item: &syn::Item) -> String {
-    match item {
-        syn::Item::Fn(f) => f.sig.ident.clone(),
-        syn::Item::Enum(e) => e.ident.clone(),
-        syn::Item::Struct(s) => s.ident.clone(),
-        syn::Item::Const(c) => c.ident.clone(),
-        syn::Item::Type(t) => t.ident.clone(),
-        syn::Item::Static(s) => s.ident.clone(),
-        syn::Item::Union(u) => u.ident.clone(),
+    match item.clone() {
+        syn::Item::Fn(f) => f.sig.ident,
+        syn::Item::Enum(e) => e.ident,
+        syn::Item::Struct(s) => s.ident,
+        syn::Item::Const(c) => c.ident,
+        syn::Item::Type(t) => t.ident,
+        syn::Item::Static(s) => s.ident,
+        syn::Item::Union(u) => u.ident,
+        syn::Item::Trait(t) => t.ident,
         _ => todo!(),
     }
     .to_string()
@@ -140,6 +146,7 @@ impl Compiler {
         // Build the dep graph of types
         let dag = TypeDAG::build(&file);
         println!("DAG: {:#?}", dag.edges);
+        dag.output_dag("type-dag.pdf")?;
 
         // SO DO THE MUT-TRAVERSAL HERE
         let mut ll = Linker::default();
@@ -195,7 +202,7 @@ impl TypeDAG {
                 | syn::Item::Enum(_)
                 | syn::Item::Static(_)
                 | syn::Item::Struct(_)
-                // | syn::Item::Trait(_) // TODO later
+                | syn::Item::Trait(_) // TODO later
                 // | syn::Item::TraitAlias(_)
                 | syn::Item::Type(_)
                 | syn::Item::Union(_) => true,
@@ -218,10 +225,9 @@ impl TypeDAG {
                 syn::Item::Static(s) => base_types(&*s.ty),
                 syn::Item::Struct(s) => fields(&s.fields),
                 syn::Item::Type(t) => base_types(&*t.ty),
-                //syn::Item::Union(u) => {}
+                syn::Item::Union(u) => fields(&syn::Fields::Named(u.fields.clone())),
+                syn::Item::Trait(t) => extract_bounds(&t.supertraits),
                 _ => HashSet::new(),
-                //// | syn::Item::Trait(_) // TODO later
-                //// | syn::Item::TraitAlias(_)
                 //_ => false,
             };
 
@@ -233,6 +239,19 @@ impl TypeDAG {
         }
 
         Self { edges }
+    }
+
+    pub fn output_dag(&self, filename: &str) -> Result<()> {
+        let mut graph = Graph::<_, ()>::new();
+        graph.add_node("A");
+        graph.add_node("B");
+        graph.add_node("C");
+        graph.add_node("D");
+        graph.extend_with_edges(&[(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)]);
+
+        println!("{:?}", Dot::with_config(&graph, &[Config::EdgeNoLabel]));
+
+        Ok(())
     }
 }
 

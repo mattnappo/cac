@@ -17,6 +17,11 @@ struct M {
     x: X,
 }
 
+union MyU {
+    int: i32,
+    float: f64,
+}
+
 static VAR: B = B::X;
 const XXX: X = X;
 
@@ -24,12 +29,20 @@ type Integer = i32;
 
 type Vector = (f64, f64, u8);
 
-struct Pair<T, U>(T, U);
+struct VSingle(f32, f64);
 
-type MyType = Pair<i32, B>;
+//struct Pair<T, U>(T, U);
 
-trait Hashable {}
+//type MyType = Pair<i32, B>;
 
-type Complex<T: Hashable> = Option<T>;
+trait Ty {}
+
+mod mm {
+    pub struct Smm;
+}
+
+fn modfn(t: mm::Smm) {}
+
+trait Hashable: Ty {}
 
 fn main() {}

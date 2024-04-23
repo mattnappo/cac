@@ -11,6 +11,8 @@ quote = "1.0.36"
 anyhow = "1.0.82"
 sha1 = "0.10.6"
 proc-macro2 = "1.0.81"
+dot = "0.1.4"
+petgraph = "0.6.4"
 
 
 [lib]
