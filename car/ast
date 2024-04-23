@@ -1,247 +1,56 @@
 
 running 1 test
-test tests::test_refs ... ok
+test tests::test_refs2 ... ok
 
 successes:
 
----- tests::test_refs stdout ----
+---- tests::test_refs2 stdout ----
 AST:
 File {
     shebang: None,
     attrs: [],
     items: [
-        Item::Fn {
+        Item::Enum {
             attrs: [],
             vis: Visibility::Inherited,
-            sig: Signature {
-                constness: None,
-                asyncness: None,
-                unsafety: None,
-                abi: None,
-                fn_token: Fn,
-                ident: Ident(
-                    a,
-                ),
-                generics: Generics {
-                    lt_token: None,
-                    params: [],
-                    gt_token: None,
-                    where_clause: None,
+            enum_token: Enum,
+            ident: Ident(
+                B,
+            ),
+            generics: Generics {
+                lt_token: None,
+                params: [],
+                gt_token: None,
+                where_clause: None,
+            },
+            brace_token: Brace,
+            variants: [
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        X,
+                    ),
+                    fields: Fields::Unit,
+                    discriminant: None,
                 },
-                paren_token: Paren,
-                inputs: [
-                    FnArg::Typed(
-                        PatType {
-                            attrs: [],
-                            pat: Pat::Ident {
-                                attrs: [],
-                                by_ref: None,
-                                mutability: None,
-                                ident: Ident(
-                                    p,
-                                ),
-                                subpat: None,
-                            },
-                            colon_token: Colon,
-                            ty: Type::Tuple {
-                                paren_token: Paren,
-                                elems: [
-                                    Type::Path {
-                                        qself: None,
-                                        path: Path {
-                                            leading_colon: None,
-                                            segments: [
-                                                PathSegment {
-                                                    ident: Ident(
-                                                        i128,
-                                                    ),
-                                                    arguments: PathArguments::None,
-                                                },
-                                            ],
-                                        },
-                                    },
-                                    Comma,
-                                    Type::Path {
-                                        qself: None,
-                                        path: Path {
-                                            leading_colon: None,
-                                            segments: [
-                                                PathSegment {
-                                                    ident: Ident(
-                                                        i128,
-                                                    ),
-                                                    arguments: PathArguments::None,
-                                                },
-                                            ],
-                                        },
-                                    },
-                                ],
-                            },
-                        },
+                Comma,
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        Y,
                     ),
-                ],
-                variadic: None,
-                output: ReturnType::Default,
-            },
-            block: Block {
-                brace_token: Brace,
-                stmts: [],
-            },
-        },
-        Item::Fn {
-            attrs: [],
-            vis: Visibility::Inherited,
-            sig: Signature {
-                constness: None,
-                asyncness: None,
-                unsafety: None,
-                abi: None,
-                fn_token: Fn,
-                ident: Ident(
-                    b,
-                ),
-                generics: Generics {
-                    lt_token: None,
-                    params: [],
-                    gt_token: None,
-                    where_clause: None,
+                    fields: Fields::Unit,
+                    discriminant: None,
                 },
-                paren_token: Paren,
-                inputs: [
-                    FnArg::Typed(
-                        PatType {
-                            attrs: [],
-                            pat: Pat::Ident {
-                                attrs: [],
-                                by_ref: None,
-                                mutability: None,
-                                ident: Ident(
-                                    i,
-                                ),
-                                subpat: None,
-                            },
-                            colon_token: Colon,
-                            ty: Type::Path {
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident(
-                                                i32,
-                                            ),
-                                            arguments: PathArguments::None,
-                                        },
-                                    ],
-                                },
-                            },
-                        },
-                    ),
-                ],
-                variadic: None,
-                output: ReturnType::Default,
-            },
-            block: Block {
-                brace_token: Brace,
-                stmts: [
-                    Stmt::Expr(
-                        Expr::Call {
-                            attrs: [],
-                            func: Expr::Path {
-                                attrs: [],
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident(
-                                                a,
-                                            ),
-                                            arguments: PathArguments::None,
-                                        },
-                                    ],
-                                },
-                            },
-                            paren_token: Paren,
-                            args: [
-                                Expr::Tuple {
-                                    attrs: [],
-                                    paren_token: Paren,
-                                    elems: [
-                                        Expr::Lit {
-                                            attrs: [],
-                                            lit: Lit::Int {
-                                                token: 2,
-                                            },
-                                        },
-                                        Comma,
-                                        Expr::Lit {
-                                            attrs: [],
-                                            lit: Lit::Int {
-                                                token: 2,
-                                            },
-                                        },
-                                    ],
-                                },
-                            ],
-                        },
-                        Some(
-                            Semi,
-                        ),
-                    ),
-                    Stmt::Local {
-                        attrs: [],
-                        let_token: Let,
-                        pat: Pat::Type {
-                            attrs: [],
-                            pat: Pat::Ident {
-                                attrs: [],
-                                by_ref: None,
-                                mutability: None,
-                                ident: Ident(
-                                    x,
-                                ),
-                                subpat: None,
-                            },
-                            colon_token: Colon,
-                            ty: Type::Path {
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident(
-                                                f32,
-                                            ),
-                                            arguments: PathArguments::None,
-                                        },
-                                    ],
-                                },
-                            },
-                        },
-                        init: Some(
-                            LocalInit {
-                                eq_token: Eq,
-                                expr: Expr::Lit {
-                                    attrs: [],
-                                    lit: Lit::Float {
-                                        token: 3.1,
-                                    },
-                                },
-                                diverge: None,
-                            },
-                        ),
-                        semi_token: Semi,
-                    },
-                ],
-            },
+                Comma,
+            ],
         },
         Item::Struct {
             attrs: [],
             vis: Visibility::Inherited,
             struct_token: Struct,
             ident: Ident(
-                Unit,
+                X,
             ),
             generics: Generics {
                 lt_token: None,
@@ -254,63 +63,130 @@ File {
                 Semi,
             ),
         },
-        Item::Fn {
+        Item::Enum {
             attrs: [],
             vis: Visibility::Inherited,
-            sig: Signature {
-                constness: None,
-                asyncness: None,
-                unsafety: None,
-                abi: None,
-                fn_token: Fn,
-                ident: Ident(
-                    c,
-                ),
-                generics: Generics {
-                    lt_token: None,
-                    params: [],
-                    gt_token: None,
-                    where_clause: None,
-                },
-                paren_token: Paren,
-                inputs: [
-                    FnArg::Typed(
-                        PatType {
-                            attrs: [],
-                            pat: Pat::Ident {
+            enum_token: Enum,
+            ident: Ident(
+                A,
+            ),
+            generics: Generics {
+                lt_token: None,
+                params: [],
+                gt_token: None,
+                where_clause: None,
+            },
+            brace_token: Brace,
+            variants: [
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        V,
+                    ),
+                    fields: Fields::Unnamed {
+                        paren_token: Paren,
+                        unnamed: [
+                            Field {
                                 attrs: [],
-                                by_ref: None,
-                                mutability: None,
-                                ident: Ident(
-                                    t,
-                                ),
-                                subpat: None,
-                            },
-                            colon_token: Colon,
-                            ty: Type::Path {
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident(
-                                                Unit,
-                                            ),
-                                            arguments: PathArguments::None,
-                                        },
-                                    ],
+                                vis: Visibility::Inherited,
+                                mutability: FieldMutability::None,
+                                ident: None,
+                                colon_token: None,
+                                ty: Type::Path {
+                                    qself: None,
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments: [
+                                            PathSegment {
+                                                ident: Ident(
+                                                    B,
+                                                ),
+                                                arguments: PathArguments::None,
+                                            },
+                                        ],
+                                    },
                                 },
                             },
-                        },
+                        ],
+                    },
+                    discriminant: None,
+                },
+                Comma,
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        U,
                     ),
-                ],
-                variadic: None,
-                output: ReturnType::Default,
-            },
-            block: Block {
-                brace_token: Brace,
-                stmts: [],
-            },
+                    fields: Fields::Named {
+                        brace_token: Brace,
+                        named: [
+                            Field {
+                                attrs: [],
+                                vis: Visibility::Inherited,
+                                mutability: FieldMutability::None,
+                                ident: Some(
+                                    Ident(
+                                        x,
+                                    ),
+                                ),
+                                colon_token: Some(
+                                    Colon,
+                                ),
+                                ty: Type::Path {
+                                    qself: None,
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments: [
+                                            PathSegment {
+                                                ident: Ident(
+                                                    B,
+                                                ),
+                                                arguments: PathArguments::None,
+                                            },
+                                        ],
+                                    },
+                                },
+                            },
+                        ],
+                    },
+                    discriminant: None,
+                },
+                Comma,
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        T,
+                    ),
+                    fields: Fields::Unnamed {
+                        paren_token: Paren,
+                        unnamed: [
+                            Field {
+                                attrs: [],
+                                vis: Visibility::Inherited,
+                                mutability: FieldMutability::None,
+                                ident: None,
+                                colon_token: None,
+                                ty: Type::Path {
+                                    qself: None,
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments: [
+                                            PathSegment {
+                                                ident: Ident(
+                                                    X,
+                                                ),
+                                                arguments: PathArguments::None,
+                                            },
+                                        ],
+                                    },
+                                },
+                            },
+                        ],
+                    },
+                    discriminant: None,
+                },
+                Comma,
+            ],
         },
         Item::Fn {
             attrs: [],
@@ -342,243 +218,60 @@ File {
         },
     ],
 }
+DAG: {
+    "B": {},
+    "X": {},
+    "A": {
+        "X",
+        "B",
+    },
+}
 AST AFTER LINKING:
 File {
     shebang: None,
     attrs: [],
     items: [
-        Item::Fn {
+        Item::Enum {
             attrs: [],
             vis: Visibility::Inherited,
-            sig: Signature {
-                constness: None,
-                asyncness: None,
-                unsafety: None,
-                abi: None,
-                fn_token: Fn,
-                ident: Ident(
-                    a,
-                ),
-                generics: Generics {
-                    lt_token: None,
-                    params: [],
-                    gt_token: None,
-                    where_clause: None,
+            enum_token: Enum,
+            ident: Ident(
+                B,
+            ),
+            generics: Generics {
+                lt_token: None,
+                params: [],
+                gt_token: None,
+                where_clause: None,
+            },
+            brace_token: Brace,
+            variants: [
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        X,
+                    ),
+                    fields: Fields::Unit,
+                    discriminant: None,
                 },
-                paren_token: Paren,
-                inputs: [
-                    FnArg::Typed(
-                        PatType {
-                            attrs: [],
-                            pat: Pat::Ident {
-                                attrs: [],
-                                by_ref: None,
-                                mutability: None,
-                                ident: Ident(
-                                    p,
-                                ),
-                                subpat: None,
-                            },
-                            colon_token: Colon,
-                            ty: Type::Tuple {
-                                paren_token: Paren,
-                                elems: [
-                                    Type::Path {
-                                        qself: None,
-                                        path: Path {
-                                            leading_colon: None,
-                                            segments: [
-                                                PathSegment {
-                                                    ident: Ident(
-                                                        __refr__d5a45d88e899d9db4f720d6e9b75682a28b5d0e0,
-                                                    ),
-                                                    arguments: PathArguments::None,
-                                                },
-                                            ],
-                                        },
-                                    },
-                                    Comma,
-                                    Type::Path {
-                                        qself: None,
-                                        path: Path {
-                                            leading_colon: None,
-                                            segments: [
-                                                PathSegment {
-                                                    ident: Ident(
-                                                        __refr__d5a45d88e899d9db4f720d6e9b75682a28b5d0e0,
-                                                    ),
-                                                    arguments: PathArguments::None,
-                                                },
-                                            ],
-                                        },
-                                    },
-                                ],
-                            },
-                        },
+                Comma,
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        Y,
                     ),
-                ],
-                variadic: None,
-                output: ReturnType::Default,
-            },
-            block: Block {
-                brace_token: Brace,
-                stmts: [],
-            },
-        },
-        Item::Fn {
-            attrs: [],
-            vis: Visibility::Inherited,
-            sig: Signature {
-                constness: None,
-                asyncness: None,
-                unsafety: None,
-                abi: None,
-                fn_token: Fn,
-                ident: Ident(
-                    b,
-                ),
-                generics: Generics {
-                    lt_token: None,
-                    params: [],
-                    gt_token: None,
-                    where_clause: None,
+                    fields: Fields::Unit,
+                    discriminant: None,
                 },
-                paren_token: Paren,
-                inputs: [
-                    FnArg::Typed(
-                        PatType {
-                            attrs: [],
-                            pat: Pat::Ident {
-                                attrs: [],
-                                by_ref: None,
-                                mutability: None,
-                                ident: Ident(
-                                    i,
-                                ),
-                                subpat: None,
-                            },
-                            colon_token: Colon,
-                            ty: Type::Path {
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident(
-                                                __refr__7563a149ef9216d5f2fe54df1b00d65a1dfe2771,
-                                            ),
-                                            arguments: PathArguments::None,
-                                        },
-                                    ],
-                                },
-                            },
-                        },
-                    ),
-                ],
-                variadic: None,
-                output: ReturnType::Default,
-            },
-            block: Block {
-                brace_token: Brace,
-                stmts: [
-                    Stmt::Expr(
-                        Expr::Call {
-                            attrs: [],
-                            func: Expr::Path {
-                                attrs: [],
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident(
-                                                a,
-                                            ),
-                                            arguments: PathArguments::None,
-                                        },
-                                    ],
-                                },
-                            },
-                            paren_token: Paren,
-                            args: [
-                                Expr::Tuple {
-                                    attrs: [],
-                                    paren_token: Paren,
-                                    elems: [
-                                        Expr::Lit {
-                                            attrs: [],
-                                            lit: Lit::Int {
-                                                token: 2,
-                                            },
-                                        },
-                                        Comma,
-                                        Expr::Lit {
-                                            attrs: [],
-                                            lit: Lit::Int {
-                                                token: 2,
-                                            },
-                                        },
-                                    ],
-                                },
-                            ],
-                        },
-                        Some(
-                            Semi,
-                        ),
-                    ),
-                    Stmt::Local {
-                        attrs: [],
-                        let_token: Let,
-                        pat: Pat::Type {
-                            attrs: [],
-                            pat: Pat::Ident {
-                                attrs: [],
-                                by_ref: None,
-                                mutability: None,
-                                ident: Ident(
-                                    x,
-                                ),
-                                subpat: None,
-                            },
-                            colon_token: Colon,
-                            ty: Type::Path {
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident(
-                                                __refr__bd1e7acba2eb174c01bac1167218f523be326312,
-                                            ),
-                                            arguments: PathArguments::None,
-                                        },
-                                    ],
-                                },
-                            },
-                        },
-                        init: Some(
-                            LocalInit {
-                                eq_token: Eq,
-                                expr: Expr::Lit {
-                                    attrs: [],
-                                    lit: Lit::Float {
-                                        token: 3.1,
-                                    },
-                                },
-                                diverge: None,
-                            },
-                        ),
-                        semi_token: Semi,
-                    },
-                ],
-            },
+                Comma,
+            ],
         },
         Item::Struct {
             attrs: [],
             vis: Visibility::Inherited,
             struct_token: Struct,
             ident: Ident(
-                Unit,
+                X,
             ),
             generics: Generics {
                 lt_token: None,
@@ -591,63 +284,130 @@ File {
                 Semi,
             ),
         },
-        Item::Fn {
+        Item::Enum {
             attrs: [],
             vis: Visibility::Inherited,
-            sig: Signature {
-                constness: None,
-                asyncness: None,
-                unsafety: None,
-                abi: None,
-                fn_token: Fn,
-                ident: Ident(
-                    c,
-                ),
-                generics: Generics {
-                    lt_token: None,
-                    params: [],
-                    gt_token: None,
-                    where_clause: None,
-                },
-                paren_token: Paren,
-                inputs: [
-                    FnArg::Typed(
-                        PatType {
-                            attrs: [],
-                            pat: Pat::Ident {
+            enum_token: Enum,
+            ident: Ident(
+                A,
+            ),
+            generics: Generics {
+                lt_token: None,
+                params: [],
+                gt_token: None,
+                where_clause: None,
+            },
+            brace_token: Brace,
+            variants: [
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        V,
+                    ),
+                    fields: Fields::Unnamed {
+                        paren_token: Paren,
+                        unnamed: [
+                            Field {
                                 attrs: [],
-                                by_ref: None,
-                                mutability: None,
-                                ident: Ident(
-                                    t,
-                                ),
-                                subpat: None,
-                            },
-                            colon_token: Colon,
-                            ty: Type::Path {
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident(
-                                                __refr__b6a9b9331932762a6d15c08515eade072565eda6,
-                                            ),
-                                            arguments: PathArguments::None,
-                                        },
-                                    ],
+                                vis: Visibility::Inherited,
+                                mutability: FieldMutability::None,
+                                ident: None,
+                                colon_token: None,
+                                ty: Type::Path {
+                                    qself: None,
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments: [
+                                            PathSegment {
+                                                ident: Ident(
+                                                    B,
+                                                ),
+                                                arguments: PathArguments::None,
+                                            },
+                                        ],
+                                    },
                                 },
                             },
-                        },
+                        ],
+                    },
+                    discriminant: None,
+                },
+                Comma,
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        U,
                     ),
-                ],
-                variadic: None,
-                output: ReturnType::Default,
-            },
-            block: Block {
-                brace_token: Brace,
-                stmts: [],
-            },
+                    fields: Fields::Named {
+                        brace_token: Brace,
+                        named: [
+                            Field {
+                                attrs: [],
+                                vis: Visibility::Inherited,
+                                mutability: FieldMutability::None,
+                                ident: Some(
+                                    Ident(
+                                        x,
+                                    ),
+                                ),
+                                colon_token: Some(
+                                    Colon,
+                                ),
+                                ty: Type::Path {
+                                    qself: None,
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments: [
+                                            PathSegment {
+                                                ident: Ident(
+                                                    B,
+                                                ),
+                                                arguments: PathArguments::None,
+                                            },
+                                        ],
+                                    },
+                                },
+                            },
+                        ],
+                    },
+                    discriminant: None,
+                },
+                Comma,
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        T,
+                    ),
+                    fields: Fields::Unnamed {
+                        paren_token: Paren,
+                        unnamed: [
+                            Field {
+                                attrs: [],
+                                vis: Visibility::Inherited,
+                                mutability: FieldMutability::None,
+                                ident: None,
+                                colon_token: None,
+                                ty: Type::Path {
+                                    qself: None,
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments: [
+                                            PathSegment {
+                                                ident: Ident(
+                                                    X,
+                                                ),
+                                                arguments: PathArguments::None,
+                                            },
+                                        ],
+                                    },
+                                },
+                            },
+                        ],
+                    },
+                    discriminant: None,
+                },
+                Comma,
+            ],
         },
         Item::Fn {
             attrs: [],
@@ -681,148 +441,136 @@ File {
 }
 compiler: Compiler {
     names_to_h: {
-        "c": "59c81357b374bbb02dd133f0723b49f916129591",
+        "X": "3349cd07b06bc01e90807833f3f6ea7d8add87d0",
+        "B": "7911efdb2ca269350593db6b658c4ba409815e7b",
+        "A": "e8a21c55c349dfa7cbcd658de59c5271b9430123",
         "main": "69f4b28bb16b87883685f2fa2b62173a6d37b0e5",
-        "Unit": "aafed7fcdee7b74ebbd7c0c0e8cb6b102f2c9563",
-        "b": "61c0ac6c59c4758a40611b47686ddfc3623f071c",
-        "a": "c4670482a0c4887455b893551c0ffee55d71a127",
     },
     h_to_ast: {
-        "c4670482a0c4887455b893551c0ffee55d71a127": Item::Fn {
+        "e8a21c55c349dfa7cbcd658de59c5271b9430123": Item::Enum {
             attrs: [],
             vis: Visibility::Inherited,
-            sig: Signature {
-                constness: None,
-                asyncness: None,
-                unsafety: None,
-                abi: None,
-                fn_token: Fn,
-                ident: Ident(
-                    a,
-                ),
-                generics: Generics {
-                    lt_token: None,
-                    params: [],
-                    gt_token: None,
-                    where_clause: None,
-                },
-                paren_token: Paren,
-                inputs: [
-                    FnArg::Typed(
-                        PatType {
-                            attrs: [],
-                            pat: Pat::Ident {
-                                attrs: [],
-                                by_ref: None,
-                                mutability: None,
-                                ident: Ident(
-                                    p,
-                                ),
-                                subpat: None,
-                            },
-                            colon_token: Colon,
-                            ty: Type::Tuple {
-                                paren_token: Paren,
-                                elems: [
-                                    Type::Path {
-                                        qself: None,
-                                        path: Path {
-                                            leading_colon: None,
-                                            segments: [
-                                                PathSegment {
-                                                    ident: Ident(
-                                                        i128,
-                                                    ),
-                                                    arguments: PathArguments::None,
-                                                },
-                                            ],
-                                        },
-                                    },
-                                    Comma,
-                                    Type::Path {
-                                        qself: None,
-                                        path: Path {
-                                            leading_colon: None,
-                                            segments: [
-                                                PathSegment {
-                                                    ident: Ident(
-                                                        i128,
-                                                    ),
-                                                    arguments: PathArguments::None,
-                                                },
-                                            ],
-                                        },
-                                    },
-                                ],
-                            },
-                        },
+            enum_token: Enum,
+            ident: Ident(
+                A,
+            ),
+            generics: Generics {
+                lt_token: None,
+                params: [],
+                gt_token: None,
+                where_clause: None,
+            },
+            brace_token: Brace,
+            variants: [
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        V,
                     ),
-                ],
-                variadic: None,
-                output: ReturnType::Default,
-            },
-            block: Block {
-                brace_token: Brace,
-                stmts: [],
-            },
-        },
-        "59c81357b374bbb02dd133f0723b49f916129591": Item::Fn {
-            attrs: [],
-            vis: Visibility::Inherited,
-            sig: Signature {
-                constness: None,
-                asyncness: None,
-                unsafety: None,
-                abi: None,
-                fn_token: Fn,
-                ident: Ident(
-                    c,
-                ),
-                generics: Generics {
-                    lt_token: None,
-                    params: [],
-                    gt_token: None,
-                    where_clause: None,
-                },
-                paren_token: Paren,
-                inputs: [
-                    FnArg::Typed(
-                        PatType {
-                            attrs: [],
-                            pat: Pat::Ident {
+                    fields: Fields::Unnamed {
+                        paren_token: Paren,
+                        unnamed: [
+                            Field {
                                 attrs: [],
-                                by_ref: None,
-                                mutability: None,
-                                ident: Ident(
-                                    t,
-                                ),
-                                subpat: None,
-                            },
-                            colon_token: Colon,
-                            ty: Type::Path {
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident(
-                                                Unit,
-                                            ),
-                                            arguments: PathArguments::None,
-                                        },
-                                    ],
+                                vis: Visibility::Inherited,
+                                mutability: FieldMutability::None,
+                                ident: None,
+                                colon_token: None,
+                                ty: Type::Path {
+                                    qself: None,
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments: [
+                                            PathSegment {
+                                                ident: Ident(
+                                                    B,
+                                                ),
+                                                arguments: PathArguments::None,
+                                            },
+                                        ],
+                                    },
                                 },
                             },
-                        },
+                        ],
+                    },
+                    discriminant: None,
+                },
+                Comma,
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        U,
                     ),
-                ],
-                variadic: None,
-                output: ReturnType::Default,
-            },
-            block: Block {
-                brace_token: Brace,
-                stmts: [],
-            },
+                    fields: Fields::Named {
+                        brace_token: Brace,
+                        named: [
+                            Field {
+                                attrs: [],
+                                vis: Visibility::Inherited,
+                                mutability: FieldMutability::None,
+                                ident: Some(
+                                    Ident(
+                                        x,
+                                    ),
+                                ),
+                                colon_token: Some(
+                                    Colon,
+                                ),
+                                ty: Type::Path {
+                                    qself: None,
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments: [
+                                            PathSegment {
+                                                ident: Ident(
+                                                    B,
+                                                ),
+                                                arguments: PathArguments::None,
+                                            },
+                                        ],
+                                    },
+                                },
+                            },
+                        ],
+                    },
+                    discriminant: None,
+                },
+                Comma,
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        T,
+                    ),
+                    fields: Fields::Unnamed {
+                        paren_token: Paren,
+                        unnamed: [
+                            Field {
+                                attrs: [],
+                                vis: Visibility::Inherited,
+                                mutability: FieldMutability::None,
+                                ident: None,
+                                colon_token: None,
+                                ty: Type::Path {
+                                    qself: None,
+                                    path: Path {
+                                        leading_colon: None,
+                                        segments: [
+                                            PathSegment {
+                                                ident: Ident(
+                                                    X,
+                                                ),
+                                                arguments: PathArguments::None,
+                                            },
+                                        ],
+                                    },
+                                },
+                            },
+                        ],
+                    },
+                    discriminant: None,
+                },
+                Comma,
+            ],
         },
         "69f4b28bb16b87883685f2fa2b62173a6d37b0e5": Item::Fn {
             attrs: [],
@@ -852,160 +600,12 @@ compiler: Compiler {
                 stmts: [],
             },
         },
-        "61c0ac6c59c4758a40611b47686ddfc3623f071c": Item::Fn {
-            attrs: [],
-            vis: Visibility::Inherited,
-            sig: Signature {
-                constness: None,
-                asyncness: None,
-                unsafety: None,
-                abi: None,
-                fn_token: Fn,
-                ident: Ident(
-                    b,
-                ),
-                generics: Generics {
-                    lt_token: None,
-                    params: [],
-                    gt_token: None,
-                    where_clause: None,
-                },
-                paren_token: Paren,
-                inputs: [
-                    FnArg::Typed(
-                        PatType {
-                            attrs: [],
-                            pat: Pat::Ident {
-                                attrs: [],
-                                by_ref: None,
-                                mutability: None,
-                                ident: Ident(
-                                    i,
-                                ),
-                                subpat: None,
-                            },
-                            colon_token: Colon,
-                            ty: Type::Path {
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident(
-                                                i32,
-                                            ),
-                                            arguments: PathArguments::None,
-                                        },
-                                    ],
-                                },
-                            },
-                        },
-                    ),
-                ],
-                variadic: None,
-                output: ReturnType::Default,
-            },
-            block: Block {
-                brace_token: Brace,
-                stmts: [
-                    Stmt::Expr(
-                        Expr::Call {
-                            attrs: [],
-                            func: Expr::Path {
-                                attrs: [],
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident(
-                                                a,
-                                            ),
-                                            arguments: PathArguments::None,
-                                        },
-                                    ],
-                                },
-                            },
-                            paren_token: Paren,
-                            args: [
-                                Expr::Tuple {
-                                    attrs: [],
-                                    paren_token: Paren,
-                                    elems: [
-                                        Expr::Lit {
-                                            attrs: [],
-                                            lit: Lit::Int {
-                                                token: 2,
-                                            },
-                                        },
-                                        Comma,
-                                        Expr::Lit {
-                                            attrs: [],
-                                            lit: Lit::Int {
-                                                token: 2,
-                                            },
-                                        },
-                                    ],
-                                },
-                            ],
-                        },
-                        Some(
-                            Semi,
-                        ),
-                    ),
-                    Stmt::Local {
-                        attrs: [],
-                        let_token: Let,
-                        pat: Pat::Type {
-                            attrs: [],
-                            pat: Pat::Ident {
-                                attrs: [],
-                                by_ref: None,
-                                mutability: None,
-                                ident: Ident(
-                                    x,
-                                ),
-                                subpat: None,
-                            },
-                            colon_token: Colon,
-                            ty: Type::Path {
-                                qself: None,
-                                path: Path {
-                                    leading_colon: None,
-                                    segments: [
-                                        PathSegment {
-                                            ident: Ident(
-                                                f32,
-                                            ),
-                                            arguments: PathArguments::None,
-                                        },
-                                    ],
-                                },
-                            },
-                        },
-                        init: Some(
-                            LocalInit {
-                                eq_token: Eq,
-                                expr: Expr::Lit {
-                                    attrs: [],
-                                    lit: Lit::Float {
-                                        token: 3.1,
-                                    },
-                                },
-                                diverge: None,
-                            },
-                        ),
-                        semi_token: Semi,
-                    },
-                ],
-            },
-        },
-        "aafed7fcdee7b74ebbd7c0c0e8cb6b102f2c9563": Item::Struct {
+        "3349cd07b06bc01e90807833f3f6ea7d8add87d0": Item::Struct {
             attrs: [],
             vis: Visibility::Inherited,
             struct_token: Struct,
             ident: Ident(
-                Unit,
+                X,
             ),
             generics: Generics {
                 lt_token: None,
@@ -1018,14 +618,49 @@ compiler: Compiler {
                 Semi,
             ),
         },
+        "7911efdb2ca269350593db6b658c4ba409815e7b": Item::Enum {
+            attrs: [],
+            vis: Visibility::Inherited,
+            enum_token: Enum,
+            ident: Ident(
+                B,
+            ),
+            generics: Generics {
+                lt_token: None,
+                params: [],
+                gt_token: None,
+                where_clause: None,
+            },
+            brace_token: Brace,
+            variants: [
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        X,
+                    ),
+                    fields: Fields::Unit,
+                    discriminant: None,
+                },
+                Comma,
+                Variant {
+                    attrs: [],
+                    ident: Ident(
+                        Y,
+                    ),
+                    fields: Fields::Unit,
+                    discriminant: None,
+                },
+                Comma,
+            ],
+        },
     },
 }
 
 
 successes:
-    tests::test_refs
+    tests::test_refs2
 
-test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2 filtered out; finished in 0.00s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.01s
 
 
 running 0 tests

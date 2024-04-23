@@ -10,4 +10,11 @@ fn b(i: i32) {
 struct Unit;
 fn c(t: Unit) {}
 
+struct Point {
+    x: Num,
+    y: Num,
+}
+
+struct Num(f32);
+
 fn main() {}
